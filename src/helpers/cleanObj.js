@@ -2,16 +2,17 @@
 
 const cleanObj = (obj) => {
     const newObj = { ...obj };
-    Object.keys(newObj).forEach((propName) => {
+    Object.keys(newObj).forEach((key) => {
         if (
-            newObj[propName] === null
-            || newObj[propName] === undefined
-            || newObj[propName] === ''
-            || (newObj[propName]
-                && Object.keys(newObj[propName]).length === 0
-                && obj[propName].constructor === Object)
+            newObj[key] === null
+            || newObj[key] === undefined
+            || newObj[key] === ''
+            // Jika object kosong (ex: {"key": {}})
+            || (newObj[key]
+                && Object.keys(newObj[key]).length === 0
+                && newObj[key].constructor === Object)
         ) {
-            delete newObj[propName];
+            delete newObj[key];
         }
     });
     return newObj;
