@@ -7,9 +7,7 @@ module.exports = (req, h) => {
 
         if (name) {
             const responseBooksByName = books
-                .filter((data) =>
-                    data.name.toLowerCase().includes(name.toLowerCase()),
-                )
+                .filter((data) => data.name.toLowerCase().includes(name.toLowerCase()))
                 .map((data) => ({
                     id: data.id,
                     name: data.name,
