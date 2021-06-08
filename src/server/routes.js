@@ -2,6 +2,7 @@ const {
     createBookHandler,
     getAllBooksHandler,
     getByIdBookHandler,
+    updateBookHandler,
 } = require('../handlers/books');
 
 const routes = [
@@ -27,7 +28,7 @@ const routes = [
     {
         method: 'PUT',
         path: '/books/{bookid}',
-        handler: (req, h) => '',
+        handler: updateBookHandler,
     },
     // route menghapus data buku
     {

@@ -17,7 +17,7 @@ module.exports = (req, h) => {
             .code(200);
     } catch (error) {
         return h
-            .response(responseError('gagal mendapatkan seluruh buku', 'error'))
+            .response(responseError('gagal mendapatkan detail buku', 'error'))
             .code(500);
     }
 };
