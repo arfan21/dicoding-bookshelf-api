@@ -4,8 +4,8 @@ const responseSuccess = (message, data) => ({
     data,
 });
 
-const responseError = (message) => ({
-    status: 'fail',
+const responseError = (message, status = 'fail') => ({
+    status,
     message,
 });
 
