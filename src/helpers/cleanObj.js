@@ -1,19 +1,20 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable no-restricted-syntax */
 // https://stackoverflow.com/questions/286141/remove-blank-attributes-from-an-object-in-javascript
 
 const cleanObj = (obj) => {
-    for (const propName in obj) {
+    const newObj = { ...obj };
+    Object.keys(newObj).forEach((propName) => {
         if (
-            obj[propName] === null ||
-            obj[propName] === undefined ||
-            obj[propName] === ''
+            newObj[propName] === null
+            || newObj[propName] === undefined
+            || newObj[propName] === ''
+            || (newObj[propName]
+                && Object.keys(newObj[propName]).length === 0
+                && obj[propName].constructor === Object)
         ) {
-            // eslint-disable-next-line no-param-reassign
-            delete obj[propName];
+            delete newObj[propName];
         }
-    }
-    return obj;
+    });
+    return newObj;
 };
 
 module.exports = cleanObj;
