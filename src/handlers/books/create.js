@@ -57,6 +57,12 @@ module.exports = (req, h) => {
 
         books.push(newBook);
 
+        const isSuccess = books.filter((book) => book.id === id).length > 0;
+
+        if (!isSuccess) {
+            throw new Error('Buku gagal ditambahkan');
+        }
+
         return h
             .response(
                 responseSuccess('Buku berhasil ditambahkan', {
@@ -65,8 +71,6 @@ module.exports = (req, h) => {
             )
             .code(201);
     } catch (error) {
-        return h
-            .response(responseError('Buku gagal ditambahkan', 'error'))
-            .code(500);
+        return h.response(responseError(error.message, 'error')).code(500);
     }
 };
